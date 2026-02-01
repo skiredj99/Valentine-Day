@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Pour Chahd 💖</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
-
+<title>For Chahd 💖</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 <style>
-/* --- Global --- */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -15,180 +12,111 @@ body {
   background: #ffe0ec;
 }
 
-/* --- Page 1 --- */
-#page1 {
+/* --- Pages --- */
+.page {
   height: 100vh;
-  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-              url("nous2.JPG");
-  background-size: cover;
-  background-position: center;
-  display: flex;
+  width: 100vw;
+  display: none;
   justify-content: center;
   align-items: center;
-  transition: opacity 1s ease;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* --- Page 1 --- */
+#page1 {
+  display: flex;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url("nous2.JPG");
+  background-size: cover;
+  background-position: center;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 130px; /* Décalé encore plus à gauche */
 }
 
 .card {
-  background: rgba(255,255,255,0.9);
-  padding: 35px 25px;
+  background: rgba(255,255,255,0.45);
+  padding: 40px 30px;
   border-radius: 25px;
-  text-align: center;
-  max-width: 90%;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  animation: fadeIn 1.2s ease forwards;
+  max-width: 400px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-h1 {
+.card h1 {
   font-family: 'Playfair Display', serif;
   color: #c2185b;
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1.4;
+  text-align: center;
+  text-shadow: 1px 1px 10px rgba(0,0,0,0.3);
+  margin: 0;
 }
 
-.buttons {
-  margin-top: 30px;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-button {
-  padding: 14px 28px;
-  font-size: 16px;
-  border-radius: 30px;
-  border: none;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-#yesBtn {
-  background: #e91e63;
-  color: white;
-  font-weight: bold;
-  box-shadow: 0 5px 15px rgba(233,30,99,0.4);
-}
-
-#yesBtn:hover {
-  transform: scale(1.05);
-}
-
-#noBtn {
-  background: #eee;
-}
-
-#noBtn:hover {
-  transform: scale(1.05);
-}
+.buttons { margin-top: 30px; display: flex; gap: 15px; }
+button { padding: 14px 28px; font-size: 16px; border-radius: 30px; border: none; cursor: pointer; transition: 0.3s; }
+#yesBtn { background: #e91e63; color: white; font-weight: bold; }
+#yesBtn:hover { transform: scale(1.08) rotate(-2deg); }
+#noBtn { background: #eee; color: #333; }
+#noBtn:hover { transform: scale(1.08) rotate(2deg); }
 
 /* --- Page 2 --- */
 #page2 {
-  display: none;
-  min-height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffe0ec);
-  text-align: center;
+  display: flex; flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: linear-gradient(135deg, #ffb6c1, #ffd6e0);
   padding: 40px 20px;
-  transition: opacity 1s ease;
+  text-align: center;
 }
+#page2 h1 { font-size: 36px; color: #c2185b; text-shadow: 2px 2px 15px rgba(0,0,0,0.3); }
+#page2 p { font-size: 20px; color: #880e4f; line-height: 1.6; }
 
-#page2 h1 {
-  font-size: 30px;
-  margin-bottom: 15px;
-}
+.gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top:20px;}
+.gallery img { width: 200px; height: 200px; object-fit: cover; border-radius: 20px; transition: transform 0.4s; cursor: pointer; }
+.gallery img:hover { transform: scale(1.05) rotate(-2deg); }
 
-#page2 p {
-  font-size: 18px;
-  line-height: 1.5;
-}
+.map-link { display: inline-block; margin-top: 25px; background: #c2185b; color: white; padding: 14px 28px; border-radius: 30px; text-decoration: none; font-weight: 500; transition: 0.3s; }
+.map-link:hover { background: #e91e63; transform: scale(1.05); }
 
-/* Galerie */
-.gallery img {
-  width: 90%;
-  max-width: 400px;
-  border-radius: 20px;
-  margin-top: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-  transition: transform 0.3s;
-}
-
-.gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* Map Link */
-.map-link {
-  display: inline-block;
-  margin-top: 25px;
-  background: #c2185b;
+/* --- Page 3 --- */
+#page3 {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  background: black;
+  text-align: center;
   color: white;
-  padding: 14px 26px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: 0.3s;
+  padding: 20px;
 }
+#page3 img { max-width: 300px; border-radius: 20px; margin-bottom: 20px; cursor: pointer; box-shadow:0 10px 30px rgba(255,0,0,0.5); }
 
-.map-link:hover {
-  background: #e91e63;
-  transform: scale(1.05);
-}
-
-/* Play Music */
-#playMusicBtn {
-  background: #e91e63;
-  color: white;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: 500;
-  margin-top: 20px;
-  transition: 0.3s;
-}
-
-#playMusicBtn:hover {
-  background: #c2185b;
-  transform: scale(1.05);
-}
-
-/* --- Hearts Animation --- */
+/* --- Hearts animation --- */
 .heart {
-  position: fixed;
-  z-index: 999;
-  font-size: 25px;
-  pointer-events: none;
-  animation: fall linear forwards;
+  position: fixed; z-index: 999; pointer-events: none;
+  animation: fall linear forwards; font-size: 25px; user-select: none;
 }
+@keyframes fall { 0%{transform:translateY(0) rotate(0deg); opacity:1;} 50%{transform:translateY(50vh) rotate(45deg);} 100%{transform:translateY(110vh) rotate(90deg); opacity:0;} }
 
-@keyframes fall {
-  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-  50% { transform: translateY(50vh) rotate(45deg); }
-  100% { transform: translateY(110vh) rotate(90deg); opacity: 0; }
-}
-
-/* Fade in animation */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(-20px); }
-  100% { opacity: 1; transform: translateY(0); }
-}
-
-/* Responsive */
-@media screen and (max-width: 480px) {
-  h1 { font-size: 24px; }
-  #page2 p { font-size: 16px; }
-  button { font-size: 14px; padding: 12px 20px; }
+/* --- Responsive --- */
+@media screen and (max-width:480px){
+  .card h1{font-size:26px;}
+  #page2 p{font-size:16px;}
+  button{font-size:14px;padding:12px 20px;}
+  .gallery img{width:45%; height:150px;}
 }
 </style>
 </head>
-
 <body>
 
-<!-- PAGE 1 -->
-<div id="page1">
+<div id="page1" class="page">
   <div class="card">
-    <h1>
-      Chahd Saadaoui 💕<br>
-      Will you be my Valentine ?
-    </h1>
+    <h1>Chahd Saadaoui 💕<br>Will you be my Valentine?</h1>
     <div class="buttons">
       <button id="yesBtn">YES 💖</button>
       <button id="noBtn">NO 🙈</button>
@@ -196,84 +124,111 @@ button {
   </div>
 </div>
 
-<!-- PAGE 2 -->
-<div id="page2">
-  <h1>💌 Rendez-vous 💌</h1>
-  <p>
-    Le <strong>14 février à 19h</strong><br><br>
-    📍 InterContinental Paris Le Grand<br>
-    2 rue Scribe – 75009 Paris
-  </p>
-
-  <!-- Play Music -->
-  <button id="playMusicBtn">🎵 Lancer la musique</button>
-  <audio id="romanticMusic" loop>
-    <source src="romantic.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
-  </audio>
-
-  <!-- Galerie -->
+<div id="page2" class="page">
+  <h1>💌 Our Romantic Evening 💌</h1>
+  <p>On <strong>February 14th at 7 PM</strong><br>📍 InterContinental Paris Le Grand</p>
   <div class="gallery">
     <img src="hotel1.jpeg">
     <img src="hotel2.jpeg">
   </div>
-
-  <!-- Google Maps -->
-  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=InterContinental+Paris+Le+Grand" target="_blank">
-    📍 Ouvrir sur Google Maps
-  </a>
+  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=InterContinental+Paris+Le+Grand" target="_blank">📍 Open in Google Maps</a>
 </div>
 
+<div id="page3" class="page">
+  <h1>😆 Oops!</h1>
+  <img src="funnyphoto.jpg" id="funnyPic">
+  <p>Click the image to go back!</p>
+</div>
+
+<audio id="romanticMusic" loop>
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+<audio id="rockMusic" loop>
+  <source src="hardrock.mp3" type="audio/mpeg">
+</audio>
+
 <script>
-let size = 1;
-const yesBtn = document.getElementById("yesBtn");
-const noBtn = document.getElementById("noBtn");
-const page1 = document.getElementById("page1");
-const page2 = document.getElementById("page2");
-const playMusicBtn = document.getElementById("playMusicBtn");
-const music = document.getElementById("romanticMusic");
+document.addEventListener('DOMContentLoaded', function(){
+  const page1 = document.getElementById('page1');
+  const page2 = document.getElementById('page2');
+  const page3 = document.getElementById('page3');
+  const yesBtn = document.getElementById('yesBtn');
+  const noBtn = document.getElementById('noBtn');
+  const funnyPic = document.getElementById('funnyPic');
+  const romanticMusic = document.getElementById('romanticMusic');
+  const rockMusic = document.getElementById('rockMusic');
 
-// NO bouton qui fait grandir YES
-noBtn.onclick = () => {
-  size += 0.2;
-  yesBtn.style.transform = `scale(${size})`;
-};
+  page1.style.display='flex';
+  page2.style.display='none';
+  page3.style.display='none';
 
-// YES bouton -> page2 + cœurs
-yesBtn.onclick = () => {
-  page1.style.opacity = 0;
-  setTimeout(() => {
-    page1.style.display = "none";
-    page2.style.display = "block";
-    page2.style.opacity = 1;
-    startHearts();
-    music.play(); // musique auto
-    playMusicBtn.style.display = "none"; // masque bouton sur mobile
-  }, 1000);
-};
+  let noClicks=0;
+  let musicUnlocked=false;
 
-// Bouton Play Music (au cas où musique non lancée)
-playMusicBtn.onclick = () => {
-  music.play();
-  playMusicBtn.style.display = "none";
-};
-
-// Fonction pour créer des cœurs animés
-function startHearts() {
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.textContent = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 25 + 15 + "px";
-    heart.style.animationDuration = 3 + Math.random()*2 + "s";
+  // Hearts animation
+  function createHeart(){
+    const heart=document.createElement('div');
+    heart.className='heart';
+    heart.textContent='💖';
+    heart.style.left=Math.random()*100+'vw';
+    heart.style.fontSize=(Math.random()*30+15)+'px';
+    heart.style.animationDuration=(3+Math.random()*2)+'s';
+    heart.style.opacity=Math.random()*0.8+0.2;
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-  }, 200);
-}
-</script>
+    setTimeout(()=>heart.remove(),5000);
+  }
+  setInterval(createHeart,250);
 
+  // Déclenchement musique romantique dès premier clic (desktop & mobile)
+  document.body.addEventListener('click',()=>{
+    if(!musicUnlocked){
+      romanticMusic.volume=1.0;
+      romanticMusic.play().catch(()=>{});
+      musicUnlocked=true;
+    }
+  }, {once:true});
+
+  // YES button
+  yesBtn.onclick = ()=>{
+    page1.style.display='none';
+    page2.style.display='flex';
+    page3.style.display='none';
+    if(!musicUnlocked){ 
+      romanticMusic.volume=1.0;
+      romanticMusic.play().catch(()=>{}); 
+      musicUnlocked=true;
+    }
+  };
+
+  // NO button
+  noBtn.onclick = ()=>{
+    noClicks++;
+    if(noClicks>=3){
+      page1.style.display='none';
+      page2.style.display='none';
+      page3.style.display='flex';
+      romanticMusic.pause();
+      rockMusic.volume=0.9;
+      rockMusic.play();
+    } else {
+      yesBtn.style.transform=`scale(${1+noClicks*0.2}) rotate(${noClicks*5}deg)`;
+    }
+  };
+
+  // Page3 click pour revenir à Page1 et réinitialiser NO
+  funnyPic.onclick = ()=>{
+    page3.style.display='none';
+    page1.style.display='flex';
+    page2.style.display='none';
+    noClicks=0;
+    rockMusic.pause();
+    romanticMusic.play();
+    yesBtn.style.transform='scale(1) rotate(0deg)';
+  };
+});
+</script>
 </body>
 </html>
+
 
 

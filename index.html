@@ -7,48 +7,53 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
+/* --- Global --- */
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
+  overflow-x: hidden;
+  background: #ffe0ec;
 }
 
-/* PAGE 1 */
+/* --- Page 1 --- */
 #page1 {
   height: 100vh;
-  background:
-    linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-    url("nous2.JPG");
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+              url("nous2.JPG");
   background-size: cover;
   background-position: center;
-  background-blend-mode: overlay;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: opacity 1s ease;
 }
 
 .card {
   background: rgba(255,255,255,0.9);
-  padding: 35px;
+  padding: 35px 25px;
   border-radius: 25px;
   text-align: center;
-  max-width: 420px;
+  max-width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  animation: fadeIn 1.2s ease forwards;
 }
 
 h1 {
   font-family: 'Playfair Display', serif;
   color: #c2185b;
-  font-size: 26px;
+  font-size: 28px;
+  line-height: 1.4;
 }
 
 .buttons {
   margin-top: 30px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 button {
-  padding: 14px 26px;
+  padding: 14px 28px;
   font-size: 16px;
   border-radius: 30px;
   border: none;
@@ -60,28 +65,53 @@ button {
   background: #e91e63;
   color: white;
   font-weight: bold;
+  box-shadow: 0 5px 15px rgba(233,30,99,0.4);
+}
+
+#yesBtn:hover {
+  transform: scale(1.05);
 }
 
 #noBtn {
   background: #eee;
 }
 
-/* PAGE 2 */
+#noBtn:hover {
+  transform: scale(1.05);
+}
+
+/* --- Page 2 --- */
 #page2 {
   display: none;
   min-height: 100vh;
   background: linear-gradient(135deg, #ffb6c1, #ffe0ec);
   text-align: center;
   padding: 40px 20px;
+  transition: opacity 1s ease;
 }
 
-/* Galerie images */
+#page2 h1 {
+  font-size: 30px;
+  margin-bottom: 15px;
+}
+
+#page2 p {
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* Galerie */
 .gallery img {
   width: 90%;
-  max-width: 420px;
+  max-width: 400px;
   border-radius: 20px;
   margin-top: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
 /* Map Link */
@@ -94,15 +124,21 @@ button {
   border-radius: 30px;
   text-decoration: none;
   font-weight: 500;
+  transition: 0.3s;
 }
 
-/* Bouton Play Music */
+.map-link:hover {
+  background: #e91e63;
+  transform: scale(1.05);
+}
+
+/* Play Music */
 #playMusicBtn {
   background: #e91e63;
   color: white;
-  padding: 12px 24px;
+  padding: 14px 28px;
   border: none;
-  border-radius: 25px;
+  border-radius: 30px;
   cursor: pointer;
   font-weight: 500;
   margin-top: 20px;
@@ -111,21 +147,35 @@ button {
 
 #playMusicBtn:hover {
   background: #c2185b;
+  transform: scale(1.05);
 }
 
-/* Animation cœurs */
+/* --- Hearts Animation --- */
+.heart {
+  position: fixed;
+  z-index: 999;
+  font-size: 25px;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
 @keyframes fall {
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 1;
-  }
-  50% {
-    transform: translateY(50vh) translateX(20px) rotate(45deg);
-  }
-  100% {
-    transform: translateY(110vh) translateX(-20px) rotate(90deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  50% { transform: translateY(50vh) rotate(45deg); }
+  100% { transform: translateY(110vh) rotate(90deg); opacity: 0; }
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media screen and (max-width: 480px) {
+  h1 { font-size: 24px; }
+  #page2 p { font-size: 16px; }
+  button { font-size: 14px; padding: 12px 20px; }
 }
 </style>
 </head>
@@ -139,7 +189,6 @@ button {
       Chahd Saadaoui 💕<br>
       Will you be my Valentine ?
     </h1>
-
     <div class="buttons">
       <button id="yesBtn">YES 💖</button>
       <button id="noBtn">NO 🙈</button>
@@ -150,30 +199,27 @@ button {
 <!-- PAGE 2 -->
 <div id="page2">
   <h1>💌 Rendez-vous 💌</h1>
-
   <p>
     Le <strong>14 février à 19h</strong><br><br>
     📍 InterContinental Paris Le Grand<br>
     2 rue Scribe – 75009 Paris
   </p>
 
-  <!-- Bouton Play Music -->
-  <button id="playMusicBtn">🎵 Play Music</button>
+  <!-- Play Music -->
+  <button id="playMusicBtn">🎵 Lancer la musique</button>
   <audio id="romanticMusic" loop>
     <source src="romantic.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
-  <!-- Galerie images -->
+  <!-- Galerie -->
   <div class="gallery">
     <img src="hotel1.jpeg">
     <img src="hotel2.jpeg">
   </div>
 
   <!-- Google Maps -->
-  <a class="map-link"
-     href="https://www.google.com/maps/search/?api=1&query=InterContinental+Paris+Le+Grand"
-     target="_blank">
+  <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=InterContinental+Paris+Le+Grand" target="_blank">
     📍 Ouvrir sur Google Maps
   </a>
 </div>
@@ -187,40 +233,47 @@ const page2 = document.getElementById("page2");
 const playMusicBtn = document.getElementById("playMusicBtn");
 const music = document.getElementById("romanticMusic");
 
-// Bouton NO qui fait grandir YES
+// NO bouton qui fait grandir YES
 noBtn.onclick = () => {
   size += 0.2;
   yesBtn.style.transform = `scale(${size})`;
 };
 
-// Bouton YES qui passe à la page 2 et lance les cœurs
+// YES bouton -> page2 + cœurs
 yesBtn.onclick = () => {
-  page1.style.display = "none";
-  page2.style.display = "block";
-  startHearts();
+  page1.style.opacity = 0;
+  setTimeout(() => {
+    page1.style.display = "none";
+    page2.style.display = "block";
+    page2.style.opacity = 1;
+    startHearts();
+    music.play(); // musique auto
+    playMusicBtn.style.display = "none"; // masque bouton sur mobile
+  }, 1000);
 };
 
-// Lancer la musique au clic
+// Bouton Play Music (au cas où musique non lancée)
 playMusicBtn.onclick = () => {
   music.play();
   playMusicBtn.style.display = "none";
 };
 
-// Animation cœurs
+// Fonction pour créer des cœurs animés
 function startHearts() {
   setInterval(() => {
     const heart = document.createElement("div");
+    heart.className = "heart";
     heart.textContent = "💖";
-    heart.style.position = "fixed";
     heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "-20px";
-    heart.style.fontSize = Math.random() * 20 + 20 + "px";
-    heart.style.animation = `fall ${3 + Math.random()*2}s cubic-bezier(0.4,0,0.2,1)`; 
+    heart.style.fontSize = Math.random() * 25 + 15 + "px";
+    heart.style.animationDuration = 3 + Math.random()*2 + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 5000);
-  }, 300);
+  }, 200);
 }
 </script>
 
 </body>
 </html>
+
+
